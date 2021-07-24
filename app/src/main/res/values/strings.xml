@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">YelpedApp</string>
+    <string name="title_activity_main">YelpedApp</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="businesses_fragment_label">Businesses</string>
+    <string name="business_detail_fragment_label">Businesses Detail</string>
 </resources>
