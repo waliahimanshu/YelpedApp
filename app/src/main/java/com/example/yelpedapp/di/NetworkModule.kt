@@ -1,5 +1,6 @@
 package com.example.yelpedapp.di
 
+import com.example.yelpedapp.api.BusinessesApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
@@ -22,6 +23,9 @@ val networkModule = module {
         provideRetrofit(httpClient = get(), moshi = provideMoshi())
     }
 
+    single {
+        get<Retrofit>().create(BusinessesApi::class.java)
+    }
 }
 
 fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
@@ -33,17 +37,14 @@ fun provideMoshi(): Moshi = Moshi.Builder()
     .build()
 
 
-fun provideRetrofit(httpClient: OkHttpClient, moshi: Moshi) {
-    Retrofit.Builder()
-        .baseUrl(BASE_UR)
-        .client(httpClient)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-}
+fun provideRetrofit(httpClient: OkHttpClient, moshi: Moshi): Retrofit = Retrofit.Builder()
+     .baseUrl(BASE_UR)
+     .client(httpClient)
+     .addConverterFactory(MoshiConverterFactory.create(moshi))
+     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+     .build()
 
-fun provideHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor) {
+fun provideHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
     OkHttpClient.Builder()
         .addInterceptor(httpLoggingInterceptor)
         .build()
-}
