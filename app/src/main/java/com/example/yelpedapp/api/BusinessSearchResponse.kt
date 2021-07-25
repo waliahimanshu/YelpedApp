@@ -1,20 +1,21 @@
 package com.example.yelpedapp.api
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class BusinessSearchResponse(
-    val total: Long,
-    val business: List<BusinessDTO>,
-    val region: RegionDTO
+    @Json(name = "total")  val total: Long,
+    @Json(name = "businesses")  val business: List<BusinessDTO>,
+    @Json(name = "region")  val region: RegionDTO
 )
 
 data class RegionDTO(
-    val center: CenterDTO
+    @Json(name = "center")  val center: CenterDTO
 )
 
 data class CenterDTO(
-    val latitude: Double,
-    val longitude: Double
+    @Json(name = "latitude") val latitude: Double,
+    @Json(name = "longitude") val longitude: Double
 )
 

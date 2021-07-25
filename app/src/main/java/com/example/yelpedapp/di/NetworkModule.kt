@@ -22,10 +22,6 @@ val networkModule = module {
     single {
         provideRetrofit(httpClient = get(), moshi = provideMoshi())
     }
-
-    single {
-        get<Retrofit>().create(BusinessesApi::class.java)
-    }
 }
 
 fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {

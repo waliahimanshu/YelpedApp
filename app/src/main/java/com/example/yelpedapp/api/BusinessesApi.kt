@@ -1,5 +1,6 @@
 package com.example.yelpedapp.api
 
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -12,7 +13,7 @@ interface BusinessesApi {
         @Header("Authorization") authHeader: String = "Bearer $API_KEY",
         @Query("term") term: String,
         @Query("location") location: String
-    ): Call<BusinessSearchResponse>
+    ): Single<BusinessSearchResponse>
 
     companion object {
         private const val API_KEY =
