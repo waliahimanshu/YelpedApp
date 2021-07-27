@@ -1,31 +1,27 @@
 package com.example.yelpedapp.feature.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.yelpedapp.databinding.FragmentFirstBinding
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.yelpedapp.R
+import kotlinx.android.synthetic.main.fragment_restaurants.restaurantsList
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BusinessesFragment : Fragment() {
+class BusinessesFragment : Fragment(R.layout.fragment_restaurants) {
 
-    private var _binding: FragmentFirstBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private lateinit var restaurantsListAdapter: RestaurantsListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        restaurantsListAdapter = RestaurantsListAdapter()
+        restaurantsList.apply {
+            adapter = restaurantsListAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

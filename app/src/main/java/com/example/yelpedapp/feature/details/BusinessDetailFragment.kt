@@ -1,33 +1,12 @@
 package com.example.yelpedapp.feature.details
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.yelpedapp.databinding.FragmentSecondBinding
+import com.example.yelpedapp.R
 
-class BusinessDetailFragment : Fragment() {
-
-    private var _binding: FragmentSecondBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        return binding.root
-
-    }
-
+class BusinessDetailFragment : Fragment(R.layout.fragment_restuarants_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
