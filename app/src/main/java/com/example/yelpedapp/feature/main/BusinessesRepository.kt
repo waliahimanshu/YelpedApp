@@ -4,8 +4,9 @@ import com.example.yelpedapp.api.BusinessesApi
 import com.example.yelpedapp.api.CategoryDTO
 import com.example.yelpedapp.feature.main.domain.Restaurants
 import io.reactivex.Single
+import javax.inject.Inject
 
-class BusinessesRepository(private val businessesApi: BusinessesApi) {
+class BusinessesRepository @Inject constructor(private val businessesApi: BusinessesApi) {
 
     fun getRestaurants(): Single<List<Restaurants>> =
         businessesApi.searchRestaurants(term = "restaurants", location = "London")
