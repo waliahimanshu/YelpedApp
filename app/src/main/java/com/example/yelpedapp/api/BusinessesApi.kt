@@ -11,6 +11,7 @@ interface BusinessesApi {
     @GET("businesses/search")
     fun searchRestaurants(
         @Header("Authorization") authHeader: String = "Bearer $API_KEY",
+        @Query("limit") limit :Int = 50,
         @Query("term") term: String,
         @Query("location") location: String
     ): Single<BusinessSearchResponse>

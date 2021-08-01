@@ -5,14 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurantsList"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/restaurant_list_item"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/restaurantsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="3"
+            tools:listitem="@layout/restaurant_list_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

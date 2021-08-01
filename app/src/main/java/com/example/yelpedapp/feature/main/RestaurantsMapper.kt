@@ -8,20 +8,6 @@ import javax.inject.Inject
 
 class RestaurantsMapper @Inject constructor() {
 
-    fun map(business: List<BusinessDTO>): List<Restaurants> = business.map { businessDTO ->
-        Restaurants(
-            id = businessDTO.id,
-            name = businessDTO.name,
-            imageUrl = businessDTO.imageURL,
-            distance = metersToMiles(businessDTO.distance),
-            rating = businessDTO.rating,
-            category = flat(businessDTO.categories),
-            price = businessDTO.price,
-            address1 = businessDTO.location.address1,
-            reviewCount = businessDTO.reviewCount
-        )
-    }
-
     fun toDomain(list: List<RestaurantsEntity>): List<Restaurants> {
         return list.map {
             with(it) {
@@ -58,14 +44,15 @@ class RestaurantsMapper @Inject constructor() {
         }
     }
 
-    private fun flat(categories: List<CategoryDTO>): String {
-        return categories.joinToString(", ") {
-            it.title
-        }
-    }
+}
 
-    private fun metersToMiles(totalDistanceInMeters: Double): String {
-        val milesInMeter = 0.000621371
-        return String.format("%.2f", totalDistanceInMeters * milesInMeter)
+private fun metersToMiles(totalDistanceInMeters: Double): String {
+    val milesInMeter = 0.000621371
+    return String.format("%.2f", totalDistanceInMeters * milesInMeter)
+}
+
+private fun flat(categories: List<CategoryDTO>): String {
+    return categories.joinToString(", ") {
+        it.title
     }
 }
