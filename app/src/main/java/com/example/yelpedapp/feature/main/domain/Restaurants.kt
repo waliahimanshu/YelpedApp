@@ -5,9 +5,9 @@ data class Restaurants(
     val name: String,
     val imageUrl: String,
     val distance: String,
-    val rating: Double,
+    val rating: Float,
     val price: String?,
     val address1: String,
-    val reviewCount: Long,
+    val reviewCount: String,
     val category: String
 )

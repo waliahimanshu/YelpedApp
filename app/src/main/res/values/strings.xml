@@ -4,4 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="businesses_fragment_label">Businesses</string>
     <string name="business_detail_fragment_label">Businesses Detail</string>
+
+    <string name="distance_in_miles"> %1$s miles</string>
+    <string name="based_on_no_of_reviews">Based on %1$s reviews</string>
 </resources>

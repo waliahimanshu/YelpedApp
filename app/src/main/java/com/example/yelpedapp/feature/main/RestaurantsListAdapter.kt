@@ -5,10 +5,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.yelpedapp.feature.main.domain.Restaurants
 
-class RestaurantsListAdapter : ListAdapter<Restaurants, RestaurantsViewHolder>(DIFF_CALLBACK) {
+class RestaurantsListAdapter(private val eventListener: RestaurantViewEventListener) :
+    ListAdapter<Restaurants, RestaurantsViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantsViewHolder {
-        return RestaurantsViewHolder.create(parent)
+        return RestaurantsViewHolder.create(parent, eventListener)
     }
 
     override fun onBindViewHolder(holder: RestaurantsViewHolder, position: Int) {

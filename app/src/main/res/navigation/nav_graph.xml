@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/BusinessFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/BusinessFragment"
         android:name="com.example.yelpedapp.feature.main.BusinessesFragment"
         android:label="@string/businesses_fragment_label"
         tools:layout="@layout/fragment_restaurants">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_BusinessFragment_to_DetailFragment"
+            app:destination="@id/businessDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/businessDetailFragment"
         android:name="com.example.yelpedapp.feature.details.BusinessDetailFragment"
         android:label="@string/business_detail_fragment_label"
         tools:layout="@layout/fragment_restuarants_details">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_DetailFragment_to_BusinessFragment"
+            app:destination="@id/BusinessFragment" />
     </fragment>
 </navigation>

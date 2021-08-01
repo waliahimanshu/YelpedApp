@@ -3,6 +3,8 @@ package com.example.yelpedapp.feature.main
 import com.example.yelpedapp.api.BusinessDTO
 import com.example.yelpedapp.api.CategoryDTO
 import com.example.yelpedapp.database.RestaurantsEntity
+import com.example.yelpedapp.feature.details.data.BusinessDetailResponse
+import com.example.yelpedapp.feature.details.domain.RestaurantDetail
 import com.example.yelpedapp.feature.main.domain.Restaurants
 import javax.inject.Inject
 
@@ -19,7 +21,7 @@ class RestaurantsMapper @Inject constructor() {
                     rating = rating,
                     price = price,
                     address1 = address1,
-                    reviewCount = reviewCount,
+                    reviewCount = reviewCount.toString(),
                     category = category
                 )
             }
@@ -44,9 +46,14 @@ class RestaurantsMapper @Inject constructor() {
         }
     }
 
+    fun toDomain(detailResponse: BusinessDetailResponse): RestaurantDetail {
+       return with(detailResponse) {
+           RestaurantDetail(name, alias, isClosed,yelpUrl,phone,photos,transactions)
+        }
+    }
 }
 
-private fun metersToMiles(totalDistanceInMeters: Double): String {
+private fun metersToMiles(totalDistanceInMeters: Float): String {
     val milesInMeter = 0.000621371
     return String.format("%.2f", totalDistanceInMeters * milesInMeter)
 }

@@ -10,9 +10,9 @@ data class RestaurantsEntity(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "imageUrl") val imageUrl: String,
     @ColumnInfo(name = "distance") val distance: String,
-    @ColumnInfo(name = "rating") val rating: Double,
+    @ColumnInfo(name = "rating") val rating: Float,
     @ColumnInfo(name = "price") val price: String?,
     @ColumnInfo(name = "address1") val address1: String,
-    @ColumnInfo(name = "reviewCount") val reviewCount: Long,
+    @ColumnInfo(name = "reviewCount") val reviewCount: Int,
     @ColumnInfo(name = "category") val category: String
 )
