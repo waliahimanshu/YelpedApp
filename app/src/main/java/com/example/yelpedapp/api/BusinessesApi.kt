@@ -1,8 +1,6 @@
 package com.example.yelpedapp.api
 
-import com.example.yelpedapp.feature.details.data.BusinessDetailResponse
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -16,10 +14,6 @@ interface BusinessesApi {
         @Query("term") term: String,
         @Query("location") location: String
     ): Single<BusinessSearchResponse>
-
-    @GET("businesses/{id}")
-    fun restaurantById(@Query("id") id: String) : Single<BusinessDetailResponse>
-
 
     companion object {
         private const val API_KEY =
