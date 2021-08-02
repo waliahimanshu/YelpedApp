@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.RestaurantListItemBinding
-import com.example.yelpedapp.feature.main.domain.Restaurants
+import com.example.yelpedapp.feature.main.domain.Restaurant
 
 class RestaurantsViewHolder(
     private val binding: RestaurantListItemBinding,
@@ -14,7 +14,7 @@ class RestaurantsViewHolder(
 ) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bindData(item: Restaurants) {
+    fun bindData(item: Restaurant) {
 
         val context = binding.root.context
         Glide.with(context)
@@ -32,7 +32,7 @@ class RestaurantsViewHolder(
         binding.categoryTextView.text = item.category
 
         binding.root.setOnClickListener {
-            eventListener.onItemClicked(item.id)
+            eventListener.onItemClicked(item)
         }
 
     }

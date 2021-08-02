@@ -3,7 +3,7 @@ package com.example.yelpedapp.feature.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yelpedapp.feature.main.domain.Restaurants
+import com.example.yelpedapp.feature.main.domain.Restaurant
 import com.example.yelpedapp.util.exhaustive
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -75,7 +75,7 @@ sealed class RestaurantViewEvents {
     object Refresh  : RestaurantViewEvents()
 }
 sealed class RestaurantListViewState {
-    data class Success(val list: List<Restaurants>) : RestaurantListViewState()
+    data class Success(val list: List<Restaurant>) : RestaurantListViewState()
     object Loading : RestaurantListViewState()
     data class Error(val message: String) : RestaurantListViewState()
 }

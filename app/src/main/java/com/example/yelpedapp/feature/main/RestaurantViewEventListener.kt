@@ -1,5 +1,7 @@
 package com.example.yelpedapp.feature.main
 
+import com.example.yelpedapp.feature.main.domain.Restaurant
+
 interface RestaurantViewEventListener {
-    fun onItemClicked(businessId: String)
+    fun onItemClicked(restaurant: Restaurant)
 }

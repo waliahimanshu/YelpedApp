@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/BusinessFragment">
+    app:startDestination="@id/businessFragment">
 
     <fragment
-        android:id="@+id/BusinessFragment"
+        android:id="@+id/businessFragment"
         android:name="com.example.yelpedapp.feature.main.BusinessesFragment"
         android:label="@string/businesses_fragment_label"
         tools:layout="@layout/fragment_restaurants">
@@ -14,15 +14,21 @@
         <action
             android:id="@+id/action_BusinessFragment_to_DetailFragment"
             app:destination="@id/businessDetailFragment" />
+
+        <argument
+            android:name="restaurant"
+            app:argType="com.example.yelpedapp.feature.main.domain.Restaurant"
+            app:nullable="false" />
+
     </fragment>
     <fragment
         android:id="@+id/businessDetailFragment"
         android:name="com.example.yelpedapp.feature.details.BusinessDetailFragment"
         android:label="@string/business_detail_fragment_label"
-        tools:layout="@layout/fragment_restuarants_details">
+        tools:layout="@layout/fragment_restaurant_details">
 
         <action
             android:id="@+id/action_DetailFragment_to_BusinessFragment"
-            app:destination="@id/BusinessFragment" />
+            app:destination="@id/businessFragment" />
     </fragment>
 </navigation>

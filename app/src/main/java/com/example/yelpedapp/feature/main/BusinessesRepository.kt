@@ -2,8 +2,7 @@ package com.example.yelpedapp.feature.main
 
 import com.example.yelpedapp.api.BusinessesApi
 import com.example.yelpedapp.database.RestaurantsDao
-import com.example.yelpedapp.feature.details.domain.RestaurantDetail
-import com.example.yelpedapp.feature.main.domain.Restaurants
+import com.example.yelpedapp.feature.main.domain.Restaurant
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -15,14 +14,10 @@ class BusinessesRepository @Inject constructor(
     private val restaurantsDao: RestaurantsDao
 ) {
 
-    fun getRestaurants(): Observable<List<Restaurants>> =
+    fun getRestaurants(): Observable<List<Restaurant>> =
         restaurantsDao
             .getAll()
             .map { mapper.toDomain(it) }
-
-    fun getRestaurantById(id: String): Single<RestaurantDetail> =
-        businessesApi.restaurantById(id).map { mapper.toDomain(it) }
-
 
     fun refreshCache(): Completable {
         return businessesApi.searchRestaurants(term = "restaurants", location = "London")

@@ -5,13 +5,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.FragmentRestaurantsBinding
+import com.example.yelpedapp.feature.main.domain.Restaurant
 import com.example.yelpedapp.util.exhaustive
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,6 +37,7 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
         restaurantsListAdapter = RestaurantsListAdapter(this)
         binding.restaurantsList.apply {
             adapter = restaurantsListAdapter
+            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
         }
 
@@ -69,13 +70,12 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
         _binding = null
     }
 
-    override fun onItemClicked(businessId: String) {
-        setFragmentResult(REQUEST_KEY, bundleOf( BUSINESS_ID to businessId))
-        findNavController().navigate(R.id.action_BusinessFragment_to_DetailFragment)
+    override fun onItemClicked(restaurant: Restaurant) {
+        val args = bundleOf(RESTAURANT_DETAIL to restaurant)
+        findNavController().navigate(R.id.action_BusinessFragment_to_DetailFragment, args)
     }
 
     companion object {
-         const val BUSINESS_ID = "BUSINESS_ID"
-         const val REQUEST_KEY = "REQUEST_KEY"
+         const val RESTAURANT_DETAIL = "restaurant"
     }
 }
