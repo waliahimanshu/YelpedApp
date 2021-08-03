@@ -11,12 +11,10 @@ data class Restaurant(
     val distance: String,
     val rating: Float,
     val price: String?,
-    val address1: String,
+    val address: String,
     val reviewCount: String,
     val category: String,
     val alias: String,
-    val isClosed: Boolean,
     val url: String,
-    val transactions: String,
     val phone: String
 ) : Parcelable

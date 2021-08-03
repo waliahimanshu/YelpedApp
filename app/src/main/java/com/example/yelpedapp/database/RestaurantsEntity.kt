@@ -12,12 +12,10 @@ data class RestaurantsEntity(
     @ColumnInfo(name = "distance") val distance: String,
     @ColumnInfo(name = "rating") val rating: Float,
     @ColumnInfo(name = "price") val price: String?,
-    @ColumnInfo(name = "address1") val address1: String,
+    @ColumnInfo(name = "address") val address: String,
     @ColumnInfo(name = "reviewCount") val reviewCount: Int,
     @ColumnInfo(name = "category") val category: String,
     @ColumnInfo(name = "alias") val alias: String,
-    @ColumnInfo(name = "transactions") val transactions: String,
-    @ColumnInfo(name = "isClosed") val isClosed: Boolean,
     @ColumnInfo(name = "url") val url: String,
     @ColumnInfo(name = "phone") val phone: String
 )

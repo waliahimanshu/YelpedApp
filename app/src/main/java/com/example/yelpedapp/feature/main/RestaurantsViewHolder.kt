@@ -22,7 +22,7 @@ class RestaurantsViewHolder(
             .into(binding.restaurantImageView)
 
         binding.restaurantName.text = item.name
-        binding.addressTextView.text = item.address1
+        binding.addressTextView.text = item.address
         binding.ratingBar.rating = item.rating
         binding.distanceTextView.text =
             context.getString(R.string.distance_in_miles, item.distance)

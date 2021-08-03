@@ -15,15 +15,13 @@ class RestaurantsMapper @Inject constructor() {
                     id = id,
                     name = name,
                     alias = alias,
-                    isClosed = isClosed,
                     phone = phone,
                     url = url,
-                    transactions = transactions,
                     imageUrl = imageUrl,
                     distance = distance,
                     rating = rating,
                     price = price,
-                    address1 = address1,
+                    address = address,
                     reviewCount = reviewCount.toString(),
                     category = category
                 )
@@ -38,20 +36,32 @@ class RestaurantsMapper @Inject constructor() {
                     id = id,
                     name = name,
                     alias = alias,
-                    isClosed= isClosed,
                     phone = phone,
                     url = url,
-                    transactions= transactions.joinToString { "," },
                     imageUrl = imageURL,
                     distance = metersToMiles(distance),
                     rating = rating,
                     price = price,
-                    address1 = location.address1,
+                    address = santizeAddress(),
                     reviewCount = reviewCount,
                     category = flat(categories)
                 )
             }
         }
+    }
+
+    private fun BusinessDTO.santizeAddress(): String {
+        return  StringBuilder()
+            .apply {
+                with(location){
+                    appendLine(address1)
+                    address2?:appendLine(address2)
+                    address3?:appendLine(address3)
+                    appendLine(state)
+                    appendLine(city)
+                    appendLine(zipCode)
+                }
+            }.toString()
     }
 }
 
