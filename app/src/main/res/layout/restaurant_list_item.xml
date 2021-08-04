@@ -33,7 +33,6 @@
             android:lines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/restaurantImageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@tools:sample/lorem" />

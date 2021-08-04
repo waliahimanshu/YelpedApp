@@ -28,24 +28,22 @@
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="24dp"
             android:lines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/restaurantMainImageView"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="@tools:sample/lorem" />
 
         <TextView
             android:id="@+id/aliasTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:lines="1"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameTextView"
             tools:text="@tools:sample/lorem/random" />
@@ -90,7 +88,6 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:maxLines="4"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/addressImageView"
             app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextVew"
             tools:text="@tools:sample/lorem/random" />
