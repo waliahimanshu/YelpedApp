@@ -25,9 +25,9 @@ The app has main screen listing list of restaurants and detail screen. The detai
 
 |main | detail | detail landscape
 |------|------|------|
-|assets/main.png|assets/detail.png|assets/detail_land.png|
+|![](assets/main.png)|![](assets/detail.png)|![](assets/detail_land.png)|
 
 
 |RTL | error |
 |------|------|
-|assets/main_rtl.png|assets/error.png|
+|![](assets/main_rtl.png)|![](assets/error.png)|
