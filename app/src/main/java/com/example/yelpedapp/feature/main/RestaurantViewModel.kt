@@ -92,7 +92,7 @@ sealed class RestaurantRefreshState {
 }
 
 sealed class RestaurantListViewState {
-    data class Success(val list: List<Restaurant>) : RestaurantListViewState()
+    data class Success(val data: List<Restaurant>) : RestaurantListViewState()
     object Loading : RestaurantListViewState()
     data class Error(val message: String) : RestaurantListViewState()
 }

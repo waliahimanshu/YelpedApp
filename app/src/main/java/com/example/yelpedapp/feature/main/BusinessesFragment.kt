@@ -3,6 +3,7 @@ package com.example.yelpedapp.feature.main
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.VisibleForTesting
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -62,7 +63,7 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
         when (viewState) {
             is RestaurantListViewState.Success -> {
                 binding.errorLoadingView.hide()
-                restaurantsListAdapter.submitList(viewState.list)
+                restaurantsListAdapter.submitList(viewState.data)
                 binding.swipeToRefresh.isRefreshing = false
             }
             is RestaurantListViewState.Error -> {
@@ -92,6 +93,6 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
     }
 
     companion object {
-         const val RESTAURANT_DETAIL = "restaurant"
+        @VisibleForTesting const val RESTAURANT_DETAIL = "restaurant"
     }
 }

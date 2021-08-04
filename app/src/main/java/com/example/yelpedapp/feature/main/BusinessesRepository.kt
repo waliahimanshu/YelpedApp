@@ -1,11 +1,12 @@
 package com.example.yelpedapp.feature.main
 
 import com.example.yelpedapp.api.BusinessesApi
+import com.example.yelpedapp.api.BusinessesApi.Companion.LOCATION_CITY
+import com.example.yelpedapp.api.BusinessesApi.Companion.TERM
 import com.example.yelpedapp.database.RestaurantsDao
 import com.example.yelpedapp.feature.main.domain.Restaurant
 import io.reactivex.Completable
 import io.reactivex.Observable
-import io.reactivex.Single
 import javax.inject.Inject
 
 class BusinessesRepository @Inject constructor(
@@ -20,7 +21,7 @@ class BusinessesRepository @Inject constructor(
             .map { mapper.toDomain(it) }
 
     fun refreshCache(): Completable {
-        return businessesApi.searchRestaurants(term = "restaurants", location = "London")
+        return businessesApi.searchRestaurants(term = TERM, location = LOCATION_CITY)
             .map { mapper.toDBEntity(it.business) }
             .doOnSuccess {
                 restaurantsDao.insertAll(it)
