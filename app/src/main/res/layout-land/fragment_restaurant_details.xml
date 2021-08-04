@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp">
 
         <ImageView
             android:id="@+id/restaurantMainImageView"
@@ -26,18 +26,17 @@
 
         <TextView
             android:id="@+id/nameTextView"
-            style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:lines="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteY="16dp"
-            tools:text="@tools:sample/lorem" />
+            app:layout_constraintStart_toEndOf="@id/restaurantMainImageView"
+            tools:text="@tools:sample/lorem/random" />
 
         <TextView
             android:id="@+id/aliasTextView"
@@ -46,9 +45,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:lines="1"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/restaurantMainImageView"
             app:layout_constraintTop_toBottomOf="@+id/nameTextView"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/lorem/random" />
 
         <ImageView
             android:id="@+id/phoneImageView"
@@ -56,7 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
+            android:contentDescription="@null"
+            app:layout_constraintStart_toEndOf="@id/restaurantMainImageView"
             app:layout_constraintTop_toBottomOf="@+id/aliasTextView"
             app:srcCompat="@drawable/ic_baseline_contact_phone_24" />
 
@@ -66,67 +67,112 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="0000000000000"
             app:layout_constraintStart_toEndOf="@+id/phoneImageView"
-            app:layout_constraintTop_toBottomOf="@+id/aliasTextView" />
-
-        <TextView
-            android:id="@+id/distanceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
-            app:layout_constraintTop_toBottomOf="@+id/phoneImageView"
-            tools:text="120 miles" />
-
-        <TextView
-            android:id="@+id/priceTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            tools:text="££££"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
-            app:layout_constraintTop_toBottomOf="@+id/distanceTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/aliasTextView"
+            tools:text="@tools:sample/us_phones" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/addressImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restaurantMainImageView"
-            app:srcCompat="@drawable/ic_baseline_map_24" />
+            android:contentDescription="@null"
+            app:layout_constraintStart_toEndOf="@id/restaurantMainImageView"
+            app:layout_constraintTop_toBottomOf="@+id/phoneImageView"
+            app:srcCompat="@drawable/ic_baseline_location_city_24"
+            tools:text="Closed" />
 
         <TextView
             android:id="@+id/fullAddressTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:maxLines="4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/addressImageView"
+            app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextVew"
+            tools:text="@tools:sample/lorem/random" />
+
+        <ImageView
+            android:id="@+id/moneyNoteImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:maxLines="6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/urlTextView"
-            tools:text="@tools:sample/lorem/random" />
+            android:contentDescription="@null"
+            app:layout_constraintStart_toEndOf="@id/restaurantMainImageView"
+            app:layout_constraintTop_toBottomOf="@+id/fullAddressTextView"
+            app:srcCompat="@drawable/ic_baseline_money_24" />
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/moneyNoteImageView"
+            app:layout_constraintTop_toBottomOf="@+id/fullAddressTextView"
+            tools:text="££££££" />
+
+        <ImageView
+            android:id="@+id/distanceImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moneyNoteImageView"
+            app:srcCompat="@drawable/ic_baseline_assistant_direction_24" />
+
+        <TextView
+            android:id="@+id/distanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/distanceImageView"
+            app:layout_constraintStart_toEndOf="@id/distanceImageView"
+            app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+            tools:text="120 miles" />
+
+
+        <ImageView
+            android:id="@+id/webImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/distanceImageView"
+            app:srcCompat="@drawable/ic_baseline_web_24" />
 
         <TextView
             android:id="@+id/urlTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="20dp"
             android:autoLink="web"
             android:clickable="true"
-            android:focusable="true"
-            android:maxLines="5"
             android:ellipsize="end"
+            android:focusable="true"
+            android:maxLines="4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/restaurantMainImageView"
-            app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+            app:layout_constraintStart_toEndOf="@+id/webImageView"
+            app:layout_constraintTop_toBottomOf="@+id/distanceTextView"
             tools:text="@tools:sample/lorem/random" />
 
+        <com.example.yelpedapp.util.ErrorLoadingView
+            android:id="@+id/errorLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

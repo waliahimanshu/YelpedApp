@@ -40,18 +40,33 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(requireContext())
         }
-
         viewModel.viewState.observe(viewLifecycleOwner, Observer(::observeViewStates))
+        viewModel.refreshingViewState.observe(viewLifecycleOwner, Observer(::observeRefreshingStates))
+    }
 
+    private fun observeRefreshingStates(state: RestaurantRefreshState) {
+        when (state) {
+            is RestaurantRefreshState.SuccessRefresh -> {
+                binding.errorLoadingView.hide()
+                binding.swipeToRefresh.isRefreshing = false
+            }
+            is RestaurantRefreshState.ErrorRefresh -> {
+                Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
+                binding.errorLoadingView.showError()
+                binding.swipeToRefresh.isRefreshing = false
+            }
+        }
     }
 
     private fun observeViewStates(viewState: RestaurantListViewState) {
         when (viewState) {
             is RestaurantListViewState.Success -> {
+                binding.errorLoadingView.hide()
                 restaurantsListAdapter.submitList(viewState.list)
                 binding.swipeToRefresh.isRefreshing = false
             }
             is RestaurantListViewState.Error -> {
+                binding.errorLoadingView.showError()
                 binding.swipeToRefresh.isRefreshing = false
                 Toast.makeText(
                     requireContext(),
@@ -60,6 +75,7 @@ class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantVi
                 ).show()
             }
             RestaurantListViewState.Loading -> {
+                binding.errorLoadingView.showLoading()
                 binding.swipeToRefresh.isRefreshing = true
             }
         }.exhaustive

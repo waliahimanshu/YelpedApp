@@ -28,6 +28,4 @@ class RestaurantDetailsViewModel @Inject constructor(
 
 sealed class RestaurantDetailsViewState {
     data class Success(val data: Restaurant) : RestaurantDetailsViewState()
-    object Loading : RestaurantDetailsViewState()
-    object Error : RestaurantDetailsViewState()
 }

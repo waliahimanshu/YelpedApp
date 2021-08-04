@@ -1,5 +1,7 @@
 package com.example.yelpedapp.feature.details
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -10,10 +12,6 @@ import com.bumptech.glide.Glide
 import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.FragmentRestaurantDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
-import android.content.Intent
-import android.net.Uri
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
 
 
 @AndroidEntryPoint
@@ -33,33 +31,36 @@ class BusinessDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
 
     private fun observerViewState(state: RestaurantDetailsViewState) {
         when (state) {
-            RestaurantDetailsViewState.Error -> {
-                Toast.makeText(requireContext(), "Error Occurred", Toast.LENGTH_SHORT).show()
-            }
             is RestaurantDetailsViewState.Success -> {
+                binding.errorLoadingView.hide()
                 val data = state.data
-                Glide.with(requireContext())
-                    .load(data.imageUrl)
-                    .into(binding.restaurantMainImageView)
-
+                setUpMainImage(data.imageUrl)
                 binding.aliasTextView.text = data.alias
                 binding.nameTextView.text = data.name
                 binding.phoneNumberTextVew.text = data.phone
                 binding.priceTextView.text = data.price
                 binding.fullAddressTextView.text = data.address
                 binding.distanceTextView.text = data.distance
-                binding.urlTextView.apply {
-                    text = data.url
-                    setOnClickListener {
-                        val i = Intent(Intent.ACTION_VIEW)
-                        i.data = Uri.parse(data.url)
-                        startActivity(i)
-                    }
-                }
-
-
+                setUpYelpUrl(data.url)
             }
-            RestaurantDetailsViewState.Loading -> TODO()
+        }
+    }
+
+    private fun setUpMainImage(imageUrl: String) {
+        Glide.with(requireContext())
+            .load(imageUrl)
+            .into(binding.restaurantMainImageView)
+    }
+
+    private fun setUpYelpUrl(url: String) {
+        binding.urlTextView.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(url)
+                ),
+                null
+            )
         }
     }
 

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yelpedapp.feature.main.domain.Restaurant
-import com.example.yelpedapp.util.exhaustive
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,14 +16,26 @@ import javax.inject.Inject
 class RestaurantViewModel @Inject constructor(
     private val businessesRepository: BusinessesRepository) :
     ViewModel() {
+
     private val disposable = CompositeDisposable()
 
     private val _viewState = MutableLiveData<RestaurantListViewState>()
     val viewState: LiveData<RestaurantListViewState> = _viewState
 
+    private val _refreshingViewState = MutableLiveData<RestaurantRefreshState>()
+    val refreshingViewState: LiveData<RestaurantRefreshState> = _refreshingViewState
+
     init {
         getDataFromLocalDb()
         refreshFromNetwork()
+    }
+    fun onViewEvent(restaurantViewEvents: RestaurantViewEvents) {
+        when (restaurantViewEvents) {
+            RestaurantViewEvents.Refresh -> {
+                _viewState.value = RestaurantListViewState.Loading
+                refreshFromNetwork()
+            }
+        }
     }
 
     private fun getDataFromLocalDb() {
@@ -32,13 +43,21 @@ class RestaurantViewModel @Inject constructor(
             businessesRepository.getRestaurants()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    _viewState.value = RestaurantListViewState.Loading
+                }
                 .subscribeBy(
-                    onNext = { _viewState.value = RestaurantListViewState.Success(it) },
+                    onNext = {
+                        if(!it.isNullOrEmpty()) {
+                            _viewState.value = RestaurantListViewState.Success(it)
+                        }
+                    },
                     onError = {
                         _viewState.value =
                             RestaurantListViewState.Error(getErrorMessage(it))
                     })
     }
+
 
     private fun refreshFromNetwork() {
         disposable +=
@@ -48,19 +67,11 @@ class RestaurantViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        _viewState.value = RestaurantListViewState.Loading
+                        _refreshingViewState.value = RestaurantRefreshState.SuccessRefresh
                     },
                     onError = {
-                        _viewState.value = RestaurantListViewState.Error(getErrorMessage(it))
+                        _refreshingViewState.value = RestaurantRefreshState.ErrorRefresh(getErrorMessage(it))
                     })
-    }
-
-    fun onViewEvent(restaurantViewEvents: RestaurantViewEvents) {
-        when (restaurantViewEvents) {
-          RestaurantViewEvents.Refresh   -> {
-              refreshFromNetwork()
-          }
-        }.exhaustive
     }
 
     private fun getErrorMessage(it: Throwable) = it.message ?: "An error has occurred"
@@ -74,6 +85,12 @@ class RestaurantViewModel @Inject constructor(
 sealed class RestaurantViewEvents {
     object Refresh  : RestaurantViewEvents()
 }
+
+sealed class RestaurantRefreshState {
+    object SuccessRefresh : RestaurantRefreshState()
+    data class ErrorRefresh(val message: String) : RestaurantRefreshState()
+}
+
 sealed class RestaurantListViewState {
     data class Success(val list: List<Restaurant>) : RestaurantListViewState()
     object Loading : RestaurantListViewState()
