@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -15,7 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class BusinessDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
+class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
 
     private val viewModel by viewModels<RestaurantDetailsViewModel>()
 
@@ -40,7 +39,7 @@ class BusinessDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
                 binding.phoneNumberTextVew.text = data.phone
                 binding.priceTextView.text = data.price
                 binding.fullAddressTextView.text = data.address
-                binding.distanceTextView.text = data.distance
+                binding.distanceTextView.text = getString(R.string.distance_in_miles, data.distance)
                 setUpYelpUrl(data.url)
             }
         }

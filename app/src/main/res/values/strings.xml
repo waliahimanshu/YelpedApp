@@ -2,8 +2,8 @@
     <string name="app_name">YelpedApp</string>
     <string name="title_activity_main">YelpedApp</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="businesses_fragment_label">Businesses</string>
-    <string name="business_detail_fragment_label">Businesses Detail</string>
+    <string name="businesses_fragment_label">Restaurants in London</string>
+    <string name="business_detail_fragment_label">Restaurant Detail</string>
 
     <string name="read_reviews">Read reviews</string>
     <string name="distance_in_miles"> %1$s miles</string>

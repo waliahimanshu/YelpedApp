@@ -17,7 +17,7 @@ import com.example.yelpedapp.util.exhaustive
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BusinessesFragment : Fragment(R.layout.fragment_restaurants), RestaurantViewEventListener {
+class RestaurantsFragment : Fragment(R.layout.fragment_restaurants), RestaurantViewEventListener {
 
     private val viewModel by viewModels<RestaurantViewModel>()
     private var _binding: FragmentRestaurantsBinding? = null

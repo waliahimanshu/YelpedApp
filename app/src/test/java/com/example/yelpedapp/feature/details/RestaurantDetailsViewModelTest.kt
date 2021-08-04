@@ -1,7 +1,7 @@
 package com.example.yelpedapp.feature.details
 
 import androidx.lifecycle.SavedStateHandle
-import com.example.yelpedapp.feature.main.BusinessesFragment.Companion.RESTAURANT_DETAIL
+import com.example.yelpedapp.feature.main.RestaurantsFragment.Companion.RESTAURANT_DETAIL
 import com.example.yelpedapp.feature.main.domain.Restaurant
 import com.example.yelpedapp.utils.getOrAwaitValue
 import com.flextrade.kfixture.KFixture

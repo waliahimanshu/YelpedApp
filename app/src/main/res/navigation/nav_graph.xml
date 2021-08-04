@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/businessFragment"
-        android:name="com.example.yelpedapp.feature.main.BusinessesFragment"
+        android:name="com.example.yelpedapp.feature.main.RestaurantsFragment"
         android:label="@string/businesses_fragment_label"
         tools:layout="@layout/fragment_restaurants">
 
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/businessDetailFragment"
-        android:name="com.example.yelpedapp.feature.details.BusinessDetailFragment"
+        android:name="com.example.yelpedapp.feature.details.RestaurantDetailFragment"
         android:label="@string/business_detail_fragment_label"
         tools:layout="@layout/fragment_restaurant_details">
 

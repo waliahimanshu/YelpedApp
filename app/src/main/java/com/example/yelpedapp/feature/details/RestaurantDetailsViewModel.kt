@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.example.yelpedapp.feature.main.BusinessesFragment.Companion.RESTAURANT_DETAIL
+import com.example.yelpedapp.feature.main.RestaurantsFragment.Companion.RESTAURANT_DETAIL
 import com.example.yelpedapp.feature.main.domain.Restaurant
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.lang.IllegalArgumentException

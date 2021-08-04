@@ -19,6 +19,7 @@ class RestaurantsViewHolder(
         val context = binding.root.context
         Glide.with(context)
             .load(item.imageUrl)
+            .placeholder(R.drawable.ic_baseline_image_24)
             .into(binding.restaurantImageView)
 
         binding.restaurantName.text = item.name

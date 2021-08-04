@@ -124,7 +124,7 @@
             android:layout_marginTop="16dp"
             android:contentDescription="@null"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/moneyNoteImageView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantMainImageView"
             app:srcCompat="@drawable/ic_baseline_assistant_direction_24" />
 
         <TextView
@@ -135,7 +135,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/distanceImageView"
             app:layout_constraintStart_toEndOf="@id/distanceImageView"
-            app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+            app:layout_constraintTop_toBottomOf="@+id/restaurantMainImageView"
             tools:text="120 miles" />
 
 
@@ -150,17 +150,19 @@
             app:layout_constraintTop_toBottomOf="@+id/distanceImageView"
             app:srcCompat="@drawable/ic_baseline_web_24" />
 
-        <TextView
+        <Button
             android:id="@+id/urlTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
-            android:autoLink="web"
             android:clickable="true"
             android:ellipsize="end"
             android:focusable="true"
             android:maxLines="4"
+            android:textColor="@color/teal_200"
+            android:text="@string/read_reviews"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/webImageView"
             app:layout_constraintTop_toBottomOf="@+id/distanceTextView"
