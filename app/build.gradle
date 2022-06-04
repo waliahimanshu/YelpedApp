@@ -7,17 +7,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.yelpedapp"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.tes`t.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -36,19 +36,20 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'com.example.yelpedapp'
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
-    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
 
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // DI
@@ -56,9 +57,9 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:2.36"
 
     // persistence Room
-    implementation "androidx.room:room-runtime:2.3.0"
-    kapt "androidx.room:room-compiler:2.3.0"
-    implementation "androidx.room:room-rxjava2:2.3.0"
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-rxjava2:2.4.2"
 
     // networking
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
@@ -79,15 +80,15 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
     // testing
     implementation "com.flextrade.jfixture:kfixture:0.2.0"
     implementation "com.google.truth:truth:1.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation "androidx.room:room-testing:2.3.0"
+    testImplementation "androidx.room:room-testing:2.4.2"
     testImplementation 'org.mockito:mockito-core:3.10.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
