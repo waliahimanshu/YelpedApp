@@ -74,7 +74,7 @@ class RestaurantViewModel @Inject constructor(
                     })
     }
 
-    private fun getErrorMessage(it: Throwable) = it.message ?: "An error has occurred"
+    private fun getErrorMessage(it: Throwable) = it.message ?: "An error occurred"
 
     override fun onCleared() {
         super.onCleared()
@@ -95,4 +95,6 @@ sealed class RestaurantListViewState {
     data class Success(val data: List<Restaurant>) : RestaurantListViewState()
     object Loading : RestaurantListViewState()
     data class Error(val message: String) : RestaurantListViewState()
+    object Empty : RestaurantListViewState()
+
 }
