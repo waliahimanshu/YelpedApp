@@ -35,18 +35,19 @@ class RestaurantsViewHolder(
         binding.root.setOnClickListener {
             eventListener.onItemClicked(item)
         }
-
     }
 
     companion object {
-        fun create(parent: ViewGroup, eventListener: RestaurantViewEventListener): RestaurantsViewHolder {
+        fun create(
+            parent: ViewGroup,
+            eventListener: RestaurantViewEventListener
+        ): RestaurantsViewHolder {
             val restaurantListItemBinding =
                 RestaurantListItemBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
-
             return RestaurantsViewHolder(restaurantListItemBinding, eventListener)
         }
     }

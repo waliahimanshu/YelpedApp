@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.FragmentRestaurantsBinding
 import com.example.yelpedapp.feature.main.domain.Restaurant
-import com.example.yelpedapp.util.exhaustive
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -79,7 +78,10 @@ class RestaurantsFragment : Fragment(R.layout.fragment_restaurants), RestaurantV
                 binding.errorLoadingView.showLoading()
                 binding.swipeToRefresh.isRefreshing = true
             }
-        }.exhaustive
+            RestaurantListViewState.Empty -> {
+
+            }
+        }
     }
 
     override fun onDestroy() {
