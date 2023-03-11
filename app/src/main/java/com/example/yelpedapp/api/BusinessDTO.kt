@@ -28,11 +28,11 @@ data class CategoryDTO(
 )
 
 data class LocationDTO(
-   @Json(name = "city") val city: String,
-   @Json(name = "country") val country: String,
-   @Json(name = "address2") val address2: String?,
-   @Json(name = "address3") val address3: String?,
-   @Json(name = "state") val state: String,
-   @Json(name = "address1") val address1: String,
-   @Json(name = "zip_code") val zipCode: String
+    @Json(name = "city") val city: String,
+    @Json(name = "country") val country: String,
+    @Json(name = "address2") val address2: String?,
+    @Json(name = "address3") val address3: String?,
+    @Json(name = "state") val state: String,
+    @Json(name = "address1") val address1: String,
+    @Json(name = "zip_code") val zipCode: String
 )
