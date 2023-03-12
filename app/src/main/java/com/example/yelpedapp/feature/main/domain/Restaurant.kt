@@ -1,7 +1,7 @@
 package com.example.yelpedapp.feature.main.domain
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Restaurant(
@@ -17,4 +17,4 @@ data class Restaurant(
     val alias: String,
     val url: String,
     val phone: String
-) : Parcelable
+): Parcelable
