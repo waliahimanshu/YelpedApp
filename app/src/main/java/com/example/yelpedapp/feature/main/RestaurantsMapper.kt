@@ -4,6 +4,7 @@ import com.example.yelpedapp.api.BusinessDTO
 import com.example.yelpedapp.api.CategoryDTO
 import com.example.yelpedapp.database.RestaurantsEntity
 import com.example.yelpedapp.feature.main.domain.Restaurant
+import java.util.*
 import javax.inject.Inject
 
 class RestaurantsMapper @Inject constructor() {
@@ -62,15 +63,21 @@ class RestaurantsMapper @Inject constructor() {
                 }
             }.toString()
     }
-}
 
-private fun metersToMiles(totalDistanceInMeters: Float): String {
-    val milesInMeter = 0.000621371
-    return String.format("%.2f", totalDistanceInMeters * milesInMeter)
-}
+    companion object {
+        private const val MILES_IN_METER = 0.000621371
+        private fun metersToMiles(totalDistanceInMeters: Float): String {
+            return String.format(
+                locale = Locale.getDefault(),
+                format = "%.2f",
+                totalDistanceInMeters * MILES_IN_METER
+            )
+        }
 
-private fun flat(categories: List<CategoryDTO>): String {
-    return categories.joinToString(", ") {
-        it.title
+        private fun flat(categories: List<CategoryDTO>): String {
+            return categories.joinToString(", ") {
+                it.title
+            }
+        }
     }
 }

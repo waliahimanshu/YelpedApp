@@ -6,7 +6,10 @@ import com.example.yelpedapp.utils.RxSchedulerRule
 import com.example.yelpedapp.utils.getOrAwaitValue
 import com.flextrade.kfixture.KFixture
 import com.google.common.truth.Truth.assertThat
-import com.nhaarman.mockitokotlin2.*
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
+import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Completable
 import io.reactivex.Observable
 import org.junit.Assert

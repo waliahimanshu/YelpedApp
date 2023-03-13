@@ -39,12 +39,17 @@ class NetworkModule {
     @Provides
     fun provideHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(READ_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
             .addInterceptor(provideLoggingInterceptor())
             .build()
 
     private fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    companion object {
+        private const val READ_TIME_OUT_IN_SECONDS = 60L
+        private const val CONNECT_TIME_OUT_IN_SECONDS = 60L
     }
 }

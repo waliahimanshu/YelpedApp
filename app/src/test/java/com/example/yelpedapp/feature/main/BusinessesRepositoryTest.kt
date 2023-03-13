@@ -11,7 +11,10 @@ import com.example.yelpedapp.database.RestaurantsEntity
 import com.example.yelpedapp.feature.main.domain.Restaurant
 import com.example.yelpedapp.utils.RxSchedulerRule
 import com.flextrade.kfixture.KFixture
-import com.nhaarman.mockitokotlin2.*
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.never
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Observable
 import io.reactivex.Single
 import org.junit.Rule
@@ -52,10 +55,9 @@ class BusinessesRepositoryTest {
         verify(mockBusinessAPI, never())
     }
 
-
     @Test
     fun `Given network refresh When request refreshThen return list of restaurants from the network `() {
-         val restaurantsDTOFixture = List(size) { fixture<BusinessDTO>() }
+        val restaurantsDTOFixture = List(size) { fixture<BusinessDTO>() }
         val response = fixture<BusinessSearchResponse>()
         whenever(
             mockBusinessAPI.searchRestaurants(

@@ -20,6 +20,8 @@ class RestaurantsFragment : Fragment(R.layout.fragment_restaurants), RestaurantV
 
     private val viewModel by viewModels<RestaurantViewModel>()
     private var _binding: FragmentRestaurantsBinding? = null
+
+    @Suppress("UnsafeCallOnNullableType")
     private val binding get() = _binding!!
 
     private lateinit var restaurantsListAdapter: RestaurantsListAdapter
