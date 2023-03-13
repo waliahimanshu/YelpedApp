@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RestaurantViewModel @Inject constructor(
-    private val businessesRepository: BusinessesRepository) :
+    private val businessesRepository: BusinessesRepository
+) :
     ViewModel() {
 
     private val disposable = CompositeDisposable()
@@ -48,16 +49,16 @@ class RestaurantViewModel @Inject constructor(
                 }
                 .subscribeBy(
                     onNext = {
-                        if(!it.isNullOrEmpty()) {
+                        if (!it.isNullOrEmpty()) {
                             _viewState.value = RestaurantListViewState.Success(it)
                         }
                     },
                     onError = {
                         _viewState.value =
                             RestaurantListViewState.Error(getErrorMessage(it))
-                    })
+                    }
+                )
     }
-
 
     private fun refreshFromNetwork() {
         disposable +=
@@ -71,7 +72,8 @@ class RestaurantViewModel @Inject constructor(
                     },
                     onError = {
                         _refreshingViewState.value = RestaurantRefreshState.ErrorRefresh(getErrorMessage(it))
-                    })
+                    }
+                )
     }
 
     private fun getErrorMessage(it: Throwable) = it.message ?: "An error occurred"
@@ -83,7 +85,7 @@ class RestaurantViewModel @Inject constructor(
 }
 
 sealed class RestaurantViewEvents {
-    object Refresh  : RestaurantViewEvents()
+    object Refresh : RestaurantViewEvents()
 }
 
 sealed class RestaurantRefreshState {
@@ -96,5 +98,4 @@ sealed class RestaurantListViewState {
     object Loading : RestaurantListViewState()
     data class Error(val message: String) : RestaurantListViewState()
     object Empty : RestaurantListViewState()
-
 }

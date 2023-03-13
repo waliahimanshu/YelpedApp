@@ -79,7 +79,6 @@ class RestaurantsFragment : Fragment(R.layout.fragment_restaurants), RestaurantV
                 binding.swipeToRefresh.isRefreshing = true
             }
             RestaurantListViewState.Empty -> {
-
             }
         }
     }

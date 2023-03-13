@@ -7,7 +7,6 @@ import com.example.yelpedapp.feature.main.domain.Restaurant
 import javax.inject.Inject
 
 class RestaurantsMapper @Inject constructor() {
-
     fun toDomain(list: List<RestaurantsEntity>): List<Restaurant> {
         return list.map {
             with(it) {
@@ -51,12 +50,12 @@ class RestaurantsMapper @Inject constructor() {
     }
 
     private fun BusinessDTO.santizeAddress(): String {
-        return  StringBuilder()
+        return StringBuilder()
             .apply {
-                with(location){
+                with(location) {
                     appendLine(address1)
-                    address2?:appendLine(address2)
-                    address3?:appendLine(address3)
+                    address2 ?: appendLine(address2)
+                    address3 ?: appendLine(address3)
                     appendLine(state)
                     appendLine(city)
                     appendLine(zipCode)

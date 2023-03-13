@@ -22,6 +22,7 @@ interface BusinessesApi {
     companion object {
         @VisibleForTesting
         const val TERM = "restaurants"
+
         @VisibleForTesting
         const val LOCATION_CITY = "London"
         private const val API_KEY =

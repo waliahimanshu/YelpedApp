@@ -16,7 +16,6 @@ class RestaurantsListAdapter(private val eventListener: RestaurantViewEventListe
         holder.bindData(getItem(position))
     }
 
-
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Restaurant>() {
             override fun areItemsTheSame(oldItem: Restaurant, newItem: Restaurant): Boolean {
@@ -27,8 +26,5 @@ class RestaurantsListAdapter(private val eventListener: RestaurantViewEventListe
                 return oldItem == newItem
             }
         }
-
     }
 }
-
-

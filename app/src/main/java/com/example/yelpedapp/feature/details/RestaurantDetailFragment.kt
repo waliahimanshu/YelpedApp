@@ -12,7 +12,6 @@ import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.FragmentRestaurantDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
 

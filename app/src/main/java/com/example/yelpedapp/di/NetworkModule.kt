@@ -14,7 +14,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 private const val BASE_UR = "https://api.yelp.com/v3/"
 
 @Module
@@ -26,7 +25,6 @@ class NetworkModule {
     fun provideMoshiSerializer(): Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-
 
     @Singleton
     @Provides

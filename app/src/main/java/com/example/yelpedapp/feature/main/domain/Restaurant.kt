@@ -17,4 +17,4 @@ data class Restaurant(
     val alias: String,
     val url: String,
     val phone: String
-): Parcelable
+) : Parcelable

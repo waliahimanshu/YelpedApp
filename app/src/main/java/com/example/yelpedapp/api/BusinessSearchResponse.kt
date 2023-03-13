@@ -18,4 +18,3 @@ data class CenterDTO(
     @Json(name = "latitude") val latitude: Double,
     @Json(name = "longitude") val longitude: Double
 )
-
