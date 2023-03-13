@@ -37,6 +37,6 @@ class RestaurantDetailsViewModelTest {
                 RestaurantDetailsViewModel(savedStateHandle)
             }
 
-        assertEquals("Business id not passed", exception.message);
+        assertEquals("Business id not passed", exception.message)
     }
 }

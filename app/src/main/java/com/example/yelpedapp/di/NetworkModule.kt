@@ -14,7 +14,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 private const val BASE_UR = "https://api.yelp.com/v3/"
 
 @Module
@@ -26,7 +25,6 @@ class NetworkModule {
     fun provideMoshiSerializer(): Moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-
 
     @Singleton
     @Provides
@@ -41,12 +39,17 @@ class NetworkModule {
     @Provides
     fun provideHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
-            .readTimeout(60, TimeUnit.SECONDS)
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(READ_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
+            .connectTimeout(CONNECT_TIME_OUT_IN_SECONDS, TimeUnit.SECONDS)
             .addInterceptor(provideLoggingInterceptor())
             .build()
 
     private fun provideLoggingInterceptor() = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
+
+    companion object {
+        private const val READ_TIME_OUT_IN_SECONDS = 60L
+        private const val CONNECT_TIME_OUT_IN_SECONDS = 60L
     }
 }

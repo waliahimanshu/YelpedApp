@@ -12,13 +12,14 @@ import com.example.yelpedapp.R
 import com.example.yelpedapp.databinding.FragmentRestaurantDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class RestaurantDetailFragment : Fragment(R.layout.fragment_restaurant_details) {
 
     private val viewModel by viewModels<RestaurantDetailsViewModel>()
 
     private var _binding: FragmentRestaurantDetailsBinding? = null
+
+    @Suppress("UnsafeCallOnNullableType")
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

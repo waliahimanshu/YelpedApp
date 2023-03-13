@@ -22,9 +22,13 @@ interface BusinessesApi {
     companion object {
         @VisibleForTesting
         const val TERM = "restaurants"
+
         @VisibleForTesting
         const val LOCATION_CITY = "London"
-        private const val API_KEY =
-            "gm_pB-xbDbcG1SMv9Sw9LFq8VmGx77-bVC5XMhNC5b_uWFMb8K22-HvcfyK3ldcmmOxnWwGVwjoI1icRghq46KTkqrVGYwLNt1bODoTqTDtasVBcIeBXEmxZR__7YHYx"
+
+        // todo remove api key
+        private const val API_KEY = "gm_pB-xbDbcG1SMv9Sw9LFq8VmGx77-bVC5XMhNC5b_" +
+            "uWFMb8K22-HvcfyK3ldcmmOxnWwGVwjoI1icRghq46KTkqrVGYwLNt1bODoTqTDtasVBcIeBXEmxZR_" +
+            "_7YHYx"
     }
 }

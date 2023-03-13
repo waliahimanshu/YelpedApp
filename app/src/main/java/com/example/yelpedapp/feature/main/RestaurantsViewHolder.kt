@@ -15,7 +15,6 @@ class RestaurantsViewHolder(
     RecyclerView.ViewHolder(binding.root) {
 
     fun bindData(item: Restaurant) {
-
         val context = binding.root.context
         Glide.with(context)
             .load(item.imageUrl)
@@ -27,7 +26,7 @@ class RestaurantsViewHolder(
         binding.ratingBar.rating = item.rating
         binding.distanceTextView.text =
 
-                          context.getString(R.string.distance_in_miles, item.distance)
+            context.getString(R.string.distance_in_miles, item.distance)
         binding.totalReviewsTextView.text =
             context.getString(R.string.based_on_no_of_reviews, item.reviewCount)
         binding.priceTextView.text = item.price
